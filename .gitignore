@@ -1,4 +1,11 @@
+.env
+.env.*
+.env.local
+.env.development.local
+.env.production.local
 node_modules
 dist
+.vite
 .DS_Store
 *.log
+source-images/
