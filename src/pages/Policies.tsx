@@ -33,18 +33,15 @@ export const Returns = () => <PolicyPage title="Returns and refunds" paragraphs=
 export const Privacy = () => (
   <PolicyPage title="Privacy">
     <p>This page explains what this website does with your information.</p>
-    <h2>Your cart</h2>
-    <p>Your cart is saved in your own browser so it is still there if you refresh the page. It is not sent to us or stored on a server.</p>
-    <h2>Checkout details</h2>
-    <p>
-      The name, phone number and address you type at checkout are used only to write your order message. When you press
-      send, that message goes to us through WhatsApp, which has its own privacy policy. This website does not store those details.
-    </p>
+    <h2>Orders</h2>
+    <p>Product enquiries open in WhatsApp with a ready-written message. Information you send is handled by WhatsApp and is not stored by this website.</p>
     <h2>Visitor statistics</h2>
     <p>
       {siteConfig.analytics.plausibleDomain
         ? 'We use Plausible Analytics to count visits. It does not use cookies and does not collect personal data.'
         : 'This website does not currently use analytics or tracking cookies.'}
     </p>
+    <h2>Store administration</h2>
+    <p>Authorized administrators sign in through Supabase. The product catalogue, product photos, and public order contact number are stored by the site owner in Supabase.</p>
   </PolicyPage>
 );

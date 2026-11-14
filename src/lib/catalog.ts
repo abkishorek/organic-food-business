@@ -1,5 +1,4 @@
 import { siteConfig } from '../config/site';
-import { products } from '../data/products';
 import type { OrderOption, Product } from '../types';
 
 const isPrice = (n: number | null | undefined): n is number =>
@@ -11,10 +10,6 @@ export function formatPrice(n: number): string {
     maximumFractionDigits: 2,
   }).format(n);
   return `${siteConfig.ordering.currencySymbol}${formatted}`;
-}
-
-export function getProduct(id: string | undefined): Product | undefined {
-  return products.find((p) => p.id === id);
 }
 
 /** Every price that has been properly configured for this product. */
@@ -54,30 +49,4 @@ export function priceLabel(p: Product): string | null {
 export function availabilityNote(p: Product): string | null {
   if (p.availability === 'out-of-stock') return 'Currently unavailable';
   return null;
-}
-
-export interface Totals {
-  subtotal: number;
-  /** null = delivery charge not yet confirmed */
-  shipping: number | null;
-  total: number;
-  isFinal: boolean;
-  belowMinimum: boolean;
-  minimumOrder: number | null;
-}
-
-export function computeTotals(subtotal: number): Totals {
-  const { shippingCharge, freeShippingAbove, minimumOrder } = siteConfig.ordering;
-  let shipping: number | null = null;
-  if (shippingCharge !== null) {
-    shipping = freeShippingAbove !== null && subtotal >= freeShippingAbove ? 0 : shippingCharge;
-  }
-  return {
-    subtotal,
-    shipping,
-    total: subtotal + (shipping ?? 0),
-    isFinal: shipping !== null,
-    belowMinimum: minimumOrder !== null && subtotal < minimumOrder,
-    minimumOrder,
-  };
 }

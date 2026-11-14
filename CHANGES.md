@@ -44,6 +44,17 @@ free-delivery rule, cart kept after reload, products without prices or out of st
 generated WhatsApp message. One bug found during testing (cart drawer closing itself after "Add to cart") was fixed.
 The test data was **not** kept: the delivered project still has no prices.
 
+---
+
+# Round 4: mobile storefront, WhatsApp-only orders, and admin
+
+- The existing hero image now leads the mobile homepage; the image itself is unchanged.
+- Removed the cart, cart drawer, checkout flow, and related customer-data forms. Product orders continue through WhatsApp.
+- Added `/admin` with Supabase email/password authentication and an explicit admin-user allowlist.
+- Admins can add, edit, and remove products; manage prices, descriptions, categories, availability, and photos; and change the WhatsApp order number.
+- Added database/storage row-level security, Supabase setup instructions, and environment-variable configuration. A Supabase project and admin account must be configured before the admin can sign in.
+- Production type-check and build pass; mobile layout verified at 390 px. Supabase login and persistence need project credentials to test.
+
 
 ---
 

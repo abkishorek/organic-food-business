@@ -31,9 +31,6 @@ export default function Footer() {
                 <Link to="/shipping">Shipping</Link>
               </li>
               <li>
-                <Link to="/returns">Returns and refunds</Link>
-              </li>
-              <li>
                 <Link to="/privacy">Privacy</Link>
               </li>
               <li>

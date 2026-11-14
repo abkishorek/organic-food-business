@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { getOrderOptions, priceLabel } from '../lib/catalog';
 import type { Product } from '../types';
-import AddToCart from './AddToCart';
+import ProductOrder from './ProductOrder';
 import ProductImage from './ProductImage';
 
 export default function ProductCard({ product }: { product: Product }) {
@@ -26,7 +26,7 @@ export default function ProductCard({ product }: { product: Product }) {
           Read more
         </Link>
         {!orderable && label && <p className="pcard__price">{label}</p>}
-        <AddToCart product={product} />
+        <ProductOrder product={product} />
       </div>
     </article>
   );

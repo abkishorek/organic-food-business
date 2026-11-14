@@ -26,11 +26,9 @@ export const siteConfig = {
      * >>> THE WHATSAPP NUMBER GOES HERE <<<
      * Digits only: country code + number, no "+", no spaces, no dashes.
      * Example for an Indian number 98765 43210  ->  '919876543210'
-     * Every "Buy on WhatsApp" button and the checkout use this one number.
+     * The storefront uses this number until an admin saves a number in Supabase.
      */
     whatsappNumber: '',
-    /** How the number should look on the site, e.g. '+91 98765 43210' */
-    phoneDisplay: '',
     email: '',
     address: '',
     serviceArea: '',
@@ -52,12 +50,8 @@ export const siteConfig = {
     freeShippingAbove: null as number | null,
     /** Minimum order value in rupees. null = no minimum. */
     minimumOrder: null as number | null,
-    /** Max quantity of one item per order line. */
-    maxQuantityPerLine: 20,
     /** Show "Price to be updated" for products with no price yet. false = hide the price. */
     showPricePlaceholder: true,
-    /** Text shown at checkout about how customers pay, e.g. 'Pay by UPI after we confirm your order.' */
-    paymentNote: '',
   },
 
   /**
@@ -74,10 +68,7 @@ export const siteConfig = {
     plausibleDomain: '',
   },
 
-  /**
-   * While true, a banner lists what is still missing (photos, prices, number...).
-   * Set to false before the site goes public.
-   */
+  /** Enables preview-only placeholders, footer reminders, and order-drafting fallbacks. */
   showPreviewNotice: true,
 };
 

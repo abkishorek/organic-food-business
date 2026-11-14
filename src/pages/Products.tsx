@@ -1,10 +1,11 @@
 import ProductCard from '../components/ProductCard';
 import StitchDivider from '../components/StitchDivider';
 import { categories } from '../data/categories';
-import { products } from '../data/products';
 import { usePageMeta } from '../lib/meta';
+import { useSiteData } from '../lib/site-data';
 
 export default function Products() {
+  const { products } = useSiteData();
   usePageMeta('Products', 'Browse spices and masalas, oils, tea and coffee, honey and cashew from Siri Vaividya.');
   return (
     <div className="container page">

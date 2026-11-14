@@ -3,13 +3,14 @@ import ProductCard from '../components/ProductCard';
 import StitchDivider from '../components/StitchDivider';
 import { siteConfig } from '../config/site';
 import { categories } from '../data/categories';
-import { products } from '../data/products';
 import WhatsAppLink from '../components/WhatsAppLink';
 import { enquiryHref } from '../lib/whatsapp';
 import { usePageMeta } from '../lib/meta';
+import { useSiteData } from '../lib/site-data';
 
 export default function Home() {
   const { brand, logo, logoAlt, heroImage, heroImageAlt } = siteConfig;
+  const { products, whatsappNumber } = useSiteData();
   usePageMeta(null, `${brand.nameEnglish} (${brand.nameKannada}): ${brand.tagline} Order on WhatsApp.`);
   const featured = products.filter((p) => p.featured);
 
@@ -31,7 +32,7 @@ export default function Home() {
               <Link to="/products" className="btn btn--primary">
                 Explore Products
               </Link>
-              <WhatsAppLink className="btn btn--outline" href={enquiryHref()}>
+              <WhatsAppLink className="btn btn--outline" href={enquiryHref(whatsappNumber)}>
                 Order on WhatsApp
               </WhatsAppLink>
             </div>
@@ -103,16 +104,16 @@ export default function Home() {
           </h2>
           <ol className="steps">
             <li>
-              <h3>Choose your products</h3>
-              <p>Pick a size where there is a choice and add it to your cart.</p>
+              <h3>Choose a product</h3>
+              <p>Browse the range and select a size where there is a choice.</p>
             </li>
             <li>
-              <h3>Enter delivery details</h3>
-              <p>Give your name, phone number and address at checkout.</p>
+              <h3>Check the details</h3>
+              <p>Review the product and price before starting your WhatsApp message.</p>
             </li>
             <li>
-              <h3>Send the order on WhatsApp</h3>
-              <p>Your order is written out for you. It is placed once you send that message.</p>
+              <h3>Send your message</h3>
+              <p>WhatsApp opens with your product details ready. Your order is placed when you send it.</p>
             </li>
           </ol>
         </div>

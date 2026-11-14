@@ -1,14 +1,16 @@
 import { Link, useParams } from 'react-router-dom';
-import AddToCart from '../components/AddToCart';
 import ProductImage from '../components/ProductImage';
+import ProductOrder from '../components/ProductOrder';
 import { categories } from '../data/categories';
-import { getOrderOptions, getProduct, priceLabel } from '../lib/catalog';
+import { getOrderOptions, priceLabel } from '../lib/catalog';
 import { usePageMeta } from '../lib/meta';
+import { useSiteData } from '../lib/site-data';
 import NotFound from './NotFound';
 
 export default function ProductDetail() {
   const { id } = useParams();
-  const product = getProduct(id);
+  const { products } = useSiteData();
+  const product = products.find((item) => item.id === id);
   usePageMeta(product?.name ?? 'Product not found', product ? product.description.split('. ').slice(0, 2).join('. ') : undefined);
   if (!product) return <NotFound />;
 
@@ -50,7 +52,7 @@ export default function ProductDetail() {
           )}
           <p className="detail__desc">{product.description}</p>
           {!orderable && label && <p className="pcard__price">{label}</p>}
-          <AddToCart product={product} showQty />
+          <ProductOrder product={product} />
           {rows.length > 0 && (
             <dl className="facts">
               {rows.map(([k, v]) => (
