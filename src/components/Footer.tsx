@@ -3,8 +3,7 @@ import { siteConfig } from '../config/site';
 import StitchDivider from './StitchDivider';
 
 export default function Footer() {
-  const { brand, legal, contact } = siteConfig;
-  const preview = siteConfig.showPreviewNotice;
+  const { brand, contact } = siteConfig;
   const social = [
     contact.instagram && { label: 'Instagram', href: contact.instagram },
     contact.facebook && { label: 'Facebook', href: contact.facebook },
@@ -45,10 +44,16 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
+          {/* Enable these rows once the business details are ready.
           <div className="footer-legal">
-            {(legal.fssai || preview) && <p>FSSAI licence no.: {legal.fssai || <em>to be added</em>}</p>}
-            {(legal.gstin || preview) && <p>GSTIN: {legal.gstin || <em>to be added (if registered)</em>}</p>}
+            {(siteConfig.legal.fssai || siteConfig.showPreviewNotice) && (
+              <p>FSSAI licence no.: {siteConfig.legal.fssai || <em>to be added</em>}</p>
+            )}
+            {(siteConfig.legal.gstin || siteConfig.showPreviewNotice) && (
+              <p>GSTIN: {siteConfig.legal.gstin || <em>to be added (if registered)</em>}</p>
+            )}
           </div>
+          */}
         </div>
         <p className="footer-copy">
           © {new Date().getFullYear()} {brand.nameEnglish}
